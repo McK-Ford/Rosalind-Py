@@ -1,0 +1,24 @@
+---
+title: "P002TranscribingDNAIntoRNA"
+author: "McKayla Ford"
+date: "2026-08-10"
+output: html_document
+---
+
+```{r}
+file_str <- "rosalind_rna.txt"
+DNA_str <- readr::read_file(file_str)
+```
+
+```{r}
+library(stringr)
+```
+
+```{r}
+RNA_str <- DNA_str |> str_replace_all("T", "U")
+```
+
+
+```{r}
+cat(RNA_str, file = "output.txt")
+```

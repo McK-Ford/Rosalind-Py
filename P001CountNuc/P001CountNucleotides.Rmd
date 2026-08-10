@@ -1,0 +1,28 @@
+---
+title: "P0001CountNucleotides"
+author: "McKayla Ford"
+date: "2026-08-10"
+output: html_document
+---
+```{r}
+file_str <- "rosalind_dna.txt"
+DNA_str <- readr::read_file(file_str)
+```
+Simplest version is to utilize stringr
+```{r}
+library(stringr)
+```
+```{r}
+a_cnt <- str_count(DNA_str, "A")
+g_cnt <- str_count(DNA_str, "G")
+t_cnt <- str_count(DNA_str, "T")
+c_cnt <- str_count(DNA_str, "C")
+```
+
+```{r}
+cnt_char <- paste0(a_cnt, " ", c_cnt, " ", g_cnt, " ", t_cnt)
+```
+
+```{r}
+cat(cnt_char, file = "output.txt")
+```
