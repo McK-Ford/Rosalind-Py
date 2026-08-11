@@ -1,0 +1,33 @@
+---
+title: "P003ComplementingDNAStrand"
+author: "McKayla Ford"
+date: "2026-08-11"
+output: html_document
+---
+
+```{r}
+file_str <- "rosalind_revc.txt"
+DNA_str <- readr::read_file(file_str)
+```
+
+```{r}
+library(stringr)
+```
+You can't do this in a single string-replace because the function doesn't seem to
+parse letter by letter, instead parsing the string repeatedly for each pattern (so T to A turns both the original Ts to A and the transformed Ts to A.) So, there's two options.
+Neither of the ones I can think of are particularly elegant, but they will work.
+
+Option 1:
+```{r}
+test  <- DNA_str |> str_replace_all(c("A" = "J", "T" = "A", "G" = "K", "C" = "G"))
+test2 <- test |> str_replace_all(c("J" = "T", "K" = "C"))
+test3 <- rev(str_split(test2, "")[[1]])
+```
+
+```{r}
+revcomp_str <- paste(test3, collapse = "")
+```
+
+```{r}
+cat(revcomp_str, file = "output.txt")
+```
