@@ -1,0 +1,29 @@
+---
+title: "P006ComputingGCContent"
+author: "McKayla Ford"
+date: "2026-08-13"
+output: html_document
+---
+
+```{r}
+library(Biostrings)
+```
+```{r}
+fa <- readDNAStringSet("rosalind_gc.txt")
+lf <- letterFrequency(fa, "CG" )[,1] #returns a table so needs to be converted
+w_vec <- width(fa)
+freq_vec <- lf/w_vec
+indx <- which.max(freq_vec)
+names(fa)[indx]
+freq_vec[indx] * 100 #wants perc format
+```
+
+
+
+
+
+
+
+
+
+

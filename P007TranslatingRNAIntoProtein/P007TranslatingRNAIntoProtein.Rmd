@@ -1,0 +1,26 @@
+---
+title: "P007TranslatingRNAIntoProtein"
+author: "McKayla Ford"
+date: "2026-08-13"
+output: html_document
+---
+
+```{r}
+library(Biostrings)
+```
+
+```{r}
+file_str <- "rosalind_prot.txt"
+RNA_str <- readr::read_file(file_str)
+```
+
+```{r}
+rstring <- RNAString(RNA_str)
+tnew <- translate(rstring)
+tnew
+```
+
+```{r}
+cat(as.character(tnew), file = "output.txt")
+```
+
